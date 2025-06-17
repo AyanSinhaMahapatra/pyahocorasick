@@ -40,7 +40,7 @@ benchmark: etc/benchmarks/benchmark.py build
 
 valgrind:
 	venv/bin/python3 -c "import sys;print(sys.version)"
-	valgrind --leak-check=full --tool=memcheck --show-leak-kinds=definite --track-origins=yes --log-file=valgrind.log --suppressions=valgrind-python.supp venv/bin/pytest -vvs --valgrind --valgrind-log=valgrind.log
+	PYTHONMALLOC=malloc valgrind --leak-check=full --tool=memcheck --show-leak-kinds=definite --track-origins=yes --log-file=valgrind.log --suppressions=valgrind-python.supp venv/bin/pytest -vvs --valgrind --valgrind-log=valgrind.log
 
 clean:
 	rm -f stamp/*
