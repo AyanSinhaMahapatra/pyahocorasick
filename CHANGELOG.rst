@@ -2,14 +2,23 @@
 Changelog
 =============
 
-2.2.0 (2024-10-21)
+2.2.0 (2025-06-18)
 --------------------------------------------------
 
 - Drop support for Python 3.8. Use older version for pre-built wheels.
   Note that it may work on these older versions, we are just no longer supporting
   and testing these Python versions, as this is end of life
 
-- Add support for Python 3.13
+- Add support for Python 3.13 and update CI scripts
+  https://github.com/WojciechMula/pyahocorasick/pull/194
+
+- Supports build pyahocorasick with GCC 15.0.1
+  https://github.com/WojciechMula/pyahocorasick/pull/201
+
+- Fix `iter-long` method
+  https://github.com/WojciechMula/pyahocorasick/pull/187
+  https://github.com/WojciechMula/pyahocorasick/pull/196
+
 
 2.1.0 (2024-03-21)
 --------------------------------------------------
