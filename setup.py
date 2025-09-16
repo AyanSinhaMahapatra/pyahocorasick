@@ -89,7 +89,6 @@ setup(
     name="pyahocorasick",
     version="2.2.0",
     ext_modules=[module],
-
     description=(
         "pyahocorasick is a fast and memory efficient library for exact or "
         "approximate multi-pattern string search.  With the ``ahocorasick.Automaton`` "
@@ -122,7 +121,7 @@ setup(
         "Topic :: Text Editors :: Text Processing",
     ],
     extras_require={
-        "testing": ["pytest", "twine", "setuptools", "wheel", ],
+        "testing": ["pytest", "twine", "setuptools", "wheel", "pytest-valgrind @ git+https://github.com/seberg/pytest-valgrind.git"],
     },
     python_requires=">=3.9",
 )

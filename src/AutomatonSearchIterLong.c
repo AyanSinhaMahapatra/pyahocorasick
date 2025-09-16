@@ -88,7 +88,7 @@ automaton_build_output_iter_long(PyObject* self) {
 
 static PyObject*
 automaton_search_iter_long_next(PyObject* self) {
-    PyObject* output = NULL;
+    PyObject* output;
     TrieNode* next;
     TrieNode* fail_node = NULL; //< the node to fail over
     int fail_index = -1;        //< the index to fail over
@@ -101,7 +101,6 @@ automaton_search_iter_long_next(PyObject* self) {
 
 return_output:
     if (iter->last_node) {
-        Py_XDECREF(output); // Release any existing reference to avoid memory leak
         output = automaton_build_output_iter_long(self);
 
         // start over, as we don't want overlapped results

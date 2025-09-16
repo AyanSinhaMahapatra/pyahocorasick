@@ -1,0 +1,35 @@
+name: Run extensive memory leak tests with valgrind
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+    valgrind_tests:
+        name: Run valgrind on Python ${{ matrix.python }} and ${{ matrix.os }} for memory leak checks
+        runs-on: ${{ matrix.os }}
+        defaults:
+          run:
+            shell: bash
+        strategy:
+            fail-fast: false
+            matrix:
+                python: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+                os: ["ubuntu-latest"]
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup
+              run: sudo apt-get install -y gcovr valgrind
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "${{ matrix.python }}"
+
+            - name: Run tests
+              run: make build && make test && make valgrind
+
+            - name: Collect valgrind log
+              uses: actions/upload-artifact@v4
+              with:
+                  path: valgrind.log
