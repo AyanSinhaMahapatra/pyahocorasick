@@ -2,6 +2,17 @@
 Changelog
 =============
 
+2.3.0 (2025-10-30)
+--------------------------------------------------
+
+- Drop support for Python 3.9. Use older version for pre-built wheels.
+  Note that it may work on these older versions, we are just no longer supporting
+  and testing these Python versions, as this is end of life
+
+- Add support for Python 3.14 and update CI & release scripts
+  https://github.com/WojciechMula/pyahocorasick/pull/194
+
+
 2.2.0 (2025-06-18)
 --------------------------------------------------
 
